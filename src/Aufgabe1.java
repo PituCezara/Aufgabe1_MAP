@@ -48,4 +48,30 @@ public class Aufgabe1 {
         for (int i = 0; i < grades.length; i++) out[i] = roundOne(grades[i]);
         return out;
     }
+
+
+    //  maxima dintre notele rotunjite
+    public static int maxRounded(int[] grades) {
+        int max = Integer.MIN_VALUE;
+        for (int g : grades) {
+            int r = roundOne(g);
+            if (r > max) max = r;
+        }
+        return grades.length == 0 ? 0 : max;
+    }
+
+    // Demo pe exemplul din enunț
+    public static void main(String[] args) {
+        int[] grades = {29, 37, 38, 41, 84, 67};
+
+        int[] insuf = insufficient(grades);
+        double avg = average(grades);
+        int[] rot = rounded(grades);
+        int maxR = maxRounded(grades);
+
+        System.out.println("1) Insuficiente: " + Arrays.toString(insuf));            // [29, 37, 38]
+        System.out.println("2) Media: " + avg);                                       // 49.33
+        System.out.println("3) Rotunjite: " + Arrays.toString(rot));                  // [29, 37, 40, 41, 85, 67]
+        System.out.println("4) Max rotunjit: " + maxR);                               // 85
+    }
 }
